@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>//Libreria del vector
+#include <algorithm>//Libreria del sort(Ordenar el vector)
+
+using namespace std;
+
+int main(){
+	
+int n, y=5;
+
+cin>>n;
+
+vector<int> x(n);
+
+for(int i=0;i<n;i++){
+
+	cin>>x[i];
+}
+
+sort(x.begin(),x.end());
+
+for(int k=0;k<n;k++){
+
+	cout<<x[k]<<" - ";
+}
+
+cout<<endl<<"Tamano del vector: "<<x.size()<<endl; //Devuelve el tamaño del vector
+cout<<"Esta vacio el vector: "<<x.empty()<<endl; //Devuelve 1 si esta vacio el vector y 0 si no
+cout<<"Primer elemento: "<<x.front()<<endl; //Acceso al primer elemento del vector
+cout<<"Ultimo elemento: "<<x.back()<<endl; //Acceso al ultimo elemento del vector
+x.push_back(y);cout<<"Anade elemento al fin del vector: "<<x.back()<<endl; //Anade elemento al fin del vector
+x.pop_back();cout<<"Quita el ultimo elemento del vector: "<<x.back()<<endl; //Quita el ultimo elemento del vector
+x.clear();cout<<"Esta vacio el vector: "<<x.empty()<<endl; //Vacia el vector
+
+return 0;
+}

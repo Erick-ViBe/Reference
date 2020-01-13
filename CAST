@@ -1,0 +1,7 @@
+CAST
+
+float b=10.5;
+
+int c;
+
+c = c + (int)b;
