@@ -1,0 +1,238 @@
+*****Directorios y rutas*****
+
+pwd - Nos muestra el directorio en el que nos encontramos actualmente
+
+cd <ruta> - Sirve para movernos a la ruta indicada,la ruta puede ser una ruta absoluta o relativa
+
+Rutas: 
+    -El caracter . nos sirve para referirnos al directorio actual
+    -Los caracteres .. nos sirve para referirnos al directorio padre del directorio actual, es decir el directorio anterior al actual
+    -Ruta absoluta: Indicamos todos los directorios a recorrer desde la raiz del sistema, por lo tanto la ruta empieza: /
+	-cd ~/Downloads/Juegos/GTAV
+    -ruta relativa: Indicamos el camino al directorio, desde el directorio actual
+	-cd GTAV/
+
+mkdir <nombre> - Crea una carpeta en el directorio actual, o en el directorio indicado
+
+touch <nombre> - Crea un archivo en el directorio actual, o en el directorio indicado
+
+
+*****Operaciones con directorios y archivos*****
+
+rm <nombre> - Borra el archivo o directorio indicado/s
+    -r:Para los directorios, ya que borra de manera recursiva
+
+mv <nombre> <ruta> - Mover un archivo o directorioa otra ruta o cambiar nombre
+    -Cambiar nombre: Especificamos el archivo o directorio a cambiarle el nombre y el nuevo nombre
+	-mv <nombre archivo/directorio> <nuevo nombre>
+    -Mover a otra ruta: Especificas el archivo o directorio a mover y la ruta a la que se movera
+	-mv <nombre archivo/directorio> <ruta>
+
+cp <nombre> <ruta> - Copiar un archivo o directorio a otra ruta
+    -Copiar archivo: Especificamos el archivo a copiar y la ruta
+    -Copiar directorio:
+	-r:Hace una copia recursiva
+
+
+*****Referencia a archivos o directorios en instrucciones*****
+
+* - Equivale a cualquier secuencia de caracteres en el nombre del archivo o directorio
+? - Equivale a un solo caracter en el nombre del archivo o directorio
+
+
+*****Mostrar contenido de directorios*****
+
+ls - Lista el contenido del directorio indicado
+    -l:Lista con detalle
+    -h:Muestra el tamao en formato kb,mb,gb,etc
+    -a:Muestra los archivos o directorios ocultos
+    -S:Ordena por tamao
+    -t:Ordena por fecha
+    -r:Reinvierte la ordenacion indicada
+
+
+*****Uso de disco*****
+
+df - Nos da informacion sobre las particiones del sistema, tamao total, usado y libre
+    -h:Muestra el tamao en formato leible(kb,mb,gb)
+
+du - Muestra el espacio en disco ocupado por el archivo o directorio(lo hara recursivamente) indicado
+    -h:Muestra el tamao en formato leible(kb,mb,gb)
+    -s:Solo muestra el tamao total de el(en el caso de ser directorio)
+
+
+*****Enlaces*****
+
+ln - Crea un enlace a un archivo o directorio, sin opciones creamos un enlace duro, con -s un enlace simbolico(blando)
+    -Enlace duro: Puntero a la informacion de disco
+    -Enlace blando: Puntero a la ruta(A los directorios siempre debera ser enlace simbolico)
+
+
+*****Cambiar permisos de archivos o directorios*****
+
+chmod - Te permite cambiar los permisos de el archivo o directorio indicado
+    -r:Indica que se tiene permitido leer
+    -w:Indica que se tiene permitido escribir
+    -x:Indica que se tiene permitido ejecutar
+
+    -u = usuario
+    -g = grupo
+    -o = otros
+
+    Ejemplo:
+    -chmod u=rwx,g=rw,o=r archivo.txt:Las letra faltantes quita los permisos y las que estan otorga los permisos
+
+
+*****Busqueda*****
+
+find - Busca de forma recursiva todos los archivos que cumplan con las condiciones indicadas
+    -name "expresion":Indica el patron del nombre a buscar diferenciando entre mayusculas y minusculas
+    -iname "expresion":Indica el patron del nombre a buscar , no diferenciando entre mayusculas y minusculas
+    -type <tipo>:Indicar el tipo de archivo a buscar
+	Tipos:
+	    -d:Directorios
+	    -f:ficheros-archivos
+	    -l:Enlaces blandos
+    -size +/-<n>:Indicar el tamao maximo(+), o minimo(-) del archivo
+	-c = bytes
+	-k = kilobytes
+	-M = megabytes
+	-G = gigabytes
+	-size +/-<n>M
+	-size +/-<n>c
+    -user <usuario>:Indicar el usuario propietario del archivo
+    -group <grupo>:Indicar el grupo del propietario del archivo
+    -mmin +/-<n>:Indicar hace cuantos minutos fue modificado por ultima vez el archivo
+    -mtime +/-<n>:Indicar hace cuantos dias fue modificado por ultima vez el archivo
+    -maxdepth <niveles>:Indica cuantos niveles(directorios) descendera en la busqueda recursiva
+    -exec <comando>:Permite ejecutar un comando para cada archivo que de resultado en la busqueda, el nombre del fichero se sustituye por {}, y el caracter ; nos indica el termino del comando.(Tanto {}, como ; tienen que ir entre comillas ara evitar ser sustituidos por el shell) 
+	-Ejemplo: find /etc/ -iname '*.conf' -exec cp '{}' /home/erick/Desktop/ ';'
+
+
+*****Comandos para mostrar texto*****
+
+echo <texto> - Muestra el texto que recibe
+    -e:Nos permite ocupar \t, \n, etc
+    -Con comillas simples ('') todo es considerado como caracter
+    -Con comillas dobles ("") el shell puede interpretar comandos o significados especiales(echo "Numero aleatorio: $RANDOM")
+
+cat <archivo> - Muestra el contenido del archivo indicado
+    -n:Muestra el numero de cada linea
+
+more - Muestra en partes el archivo indicado, de acuerdo a las lineas que quepan en la ventana
+    -ENTER-Para avanzar linea por linea
+    -ESPACIO-Para avanzar bloque por bloque
+    -q-Para salir
+    -h-Nos muestra la ayuda
+
+more - Muestra en partes el archivo indicado, de acuerdo a las lineas que quepan en la ventana, pero es mas eficiente para archivos muy grandes, ya que va cargando parte por parte, y tambien permite realizar busquedas o modificaciones
+    -ENTER-Para avanzar linea por linea
+    -ESPACIO-Para avanzar bloque por bloque
+    -q-Para salir
+    -h-Nos muestra la ayuda
+
+head - Muestra las primeras n lineas, por defecto muestra 10
+    -n<numero>:Lineas a mostrar
+
+tail - Muestra las ultimas n lineas, por defecto muestra 10
+    -n<numero>:Lineas a mostrar
+
+cut - Muestra solo parte de cada linea, como si se hiciera un "corte" vertical
+    -c <n>:Muestra los caracteres que le indiquemos, ya sea un rango, indicado con (-),o caracteres individuales indicado con (,)
+	-Ejemplos:
+	    -cut -c 5,10 file.txt (Muestra los caracteres de la posicion 5 y 10)
+	    -cut -c 7-25 file.txt (Muestra los caracteres desde la posicion 7 hasta la posicion 25, osea 19 caracteres)
+    -d"caracter":Indicar un caracter separador, asi podremos hacer columnas, de acuerdo a algun caracter indicado
+    -f<n>:Indica las columnas a mostrarse(creadas con -d), puedes utilizarlo igual que con -c, con rango (-), o columnas independientes (,)
+	-cut -d":" -f1,3 file.txt
+	-cut -d"," -f2-5 file.txt
+	    
+grep <patron> <archivo>- Muestra solo las lineas que cumplen con el patron indicado, ya sean palabras o expresiones regulares
+    -v:Muestra las que no coinciden con el patron
+    -l:Muestra el nombre del fichero donde se encontro la coincidencia
+    -w:El patron tiene que ser una palabra independiente, no pertenecer o ser parte de otra palabra
+    -n:Nos muestra le numero de linea
+    -i:No distingue entre mayusculas u minusculas
+    -c:Muestra la cantidad de lineas que coinciden con el patron
+    -r:Busca de forma recursiva
+
+sort - Ordena el contenido del archivo indicado de la a-z y 0-9
+    -r:Invierte el ordenamiento
+    -n:Indica que el ordenamiento sea en informacion numerica
+    -h.Indica el ordenamiento en funcion de magnitudes kb,mb,gb
+
+uniq - Omite las lineas que esten estrictamente una al lado de la otra y sean iguales, y solo muestra una de ellas
+    -i:No distingue entre mayusculas y minusculas
+    -d:Solo nos muestra las lineas repetidas
+
+wc - Muestra la cantidad de lineas, palabras y caracteres del archivo indicado
+    -l:Muestra solo la cantidad de lineas
+    -w:Muestra solo la cantidad de palabras
+    -m:Muestra solo la cantidad de caracteres
+
+rev - Muestra de manera invertida horizontalmente, el archivo indicado
+
+
+*****Redireccionar la salida estandar*****
+
+Por defecto la salida estandar de los comandos es el monitor, cualquier comando que nosotros ejecutamos y muestra un resultaod, ese resultado es mostrado en el monitor
+
+Podemos cambiar la salida estandar de nuestros comando con >,como por ejemplo, escribirla en un archivo
+    -Ejemplo:
+	-echo "Hola mundo!!!" > saludo.txt:Lo que haria es guardar en el archivo saludo.txt el texto "Hola Mundo!!!"
+
+-Si solo utilizamos >, si no existe el archivo lo crea y escribe lo indicado, si el archivo ya existe, lo sobrescribe
+
+-Utilizando >>, si no existe el archivo lo crea y escribe lo indicado, si el archivo ya existe, anade el texto al final
+
+Si queremos redirigir los errores lo hacemos con: 2> o 2>>
+
+Si queremos redirigir tanto el resultado de nuestro comando como los errores: &> o &>>
+
+Si queremos desechar alguna salida, podemos utilizar el dispositivo /dev/null, al mandarla aqui no apareceria ni se guardaria en ningun sitio
+
+
+*****Conectar comandos: TUBERIAS*****
+Las tuberias nos sirven para utilizar la salida de un comando para otro comando, redirigiendo el resultado de un comando(salida), a otro comando
+
+Esto se realiza con el caracter |, y lo que hace es establecer un "canal" por el que pasa la salida de un comando a otro
+
+    -Ejemplo:
+	-echo "Hola Mundo!!!" | wc
+	-grep ^a /etc/passwd | cut -d":" -f1
+
+
+
+*****Redireccionar la entrada estandar*****
+
+Por defecto la entra estandar es el teclado, pero la podemos redirigir con el caracter <, esto enviara la informacion contenida en el fichero, al comando
+
+    -Ejemplo:
+	-sort < listado.txt
+	-mysql < db_backup.sql
+    
+
+*****Remplazo de texto*****
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
