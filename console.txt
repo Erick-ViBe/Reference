@@ -125,7 +125,7 @@ more - Muestra en partes el archivo indicado, de acuerdo a las lineas que quepan
     -q-Para salir
     -h-Nos muestra la ayuda
 
-more - Muestra en partes el archivo indicado, de acuerdo a las lineas que quepan en la ventana, pero es mas eficiente para archivos muy grandes, ya que va cargando parte por parte, y tambien permite realizar busquedas o modificaciones
+less - Muestra en partes el archivo indicado, de acuerdo a las lineas que quepan en la ventana, pero es mas eficiente para archivos muy grandes, ya que va cargando parte por parte, y tambien permite realizar busquedas o modificaciones
     -ENTER-Para avanzar linea por linea
     -ESPACIO-Para avanzar bloque por bloque
     -q-Para salir
