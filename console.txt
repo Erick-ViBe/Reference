@@ -83,6 +83,15 @@ chmod - Te permite cambiar los permisos de el archivo o directorio indicado
     -chmod u=rwx,g=rw,o=r archivo.txt:Las letra faltantes quita los permisos y las que estan otorga los permisos
 
 
+*****Cambiar el usuario y grupo propietario de archivo o directorio*****
+
+chown <usuario> <archivo o directorio> - Cambia el usuario propietario del archivo o directorio indicado
+    -r:Lo hace de forma recursiva, sirve para modificar todo el contenido en caso de ser un directorio
+
+chgrp <grupo> <archivo o directorio> - Cambia el grupo propietario del archivo o directorio indicado
+    -r:Lo hace de forma recursiva, sirve para modificar todo el contenido en caso de ser un directorio
+
+
 *****Busqueda*****
 
 find - Busca de forma recursiva todos los archivos que cumplan con las condiciones indicadas
