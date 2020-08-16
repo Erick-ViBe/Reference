@@ -1,5 +1,5 @@
 *****Directorios y rutas*****
-
+Borrar esto
 pwd - Nos muestra el directorio en el que nos encontramos actualmente
 
 cd <ruta> - Sirve para movernos a la ruta indicada,la ruta puede ser una ruta absoluta o relativa
