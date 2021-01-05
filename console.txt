@@ -234,6 +234,10 @@ Por defecto la entra estandar es el teclado, pero la podemos redirigir con el ca
 
 
 
+asldkfjasdf;lkjasdfasdf;lkjfasd
+
+
+
 
 
 
