@@ -221,29 +221,41 @@ Por defecto la entra estandar es el teclado, pero la podemos redirigir con el ca
 	-mysql < db_backup.sql
     
 
-*****Remplazo de texto*****
+*****Expresiones Regulares*****
 
+Es una cadena de caracteres que es utilizada para describir o encontrar patrones dentro de otros strings.
 
++Caracteres especiales:
+    - ^: Inicio de linea
+    - $: Fin de linea
+    - . : Cualquier caracter. Si queremos quitar el significado especial tendremos que poner la contrabarra \ delante
 
++Corchetes []:
+    -Se usan para indicar un conjunto determinado de caracteres que pueden aparecer en determinada posicion
+    -Ejemplo:
+        c[aei]s[ao] => casa, caso, cesa, ceso, cisa, ciso
 
++Clases:
+    -Conjunto predefinido de caracteres:
+        [:alnum:]: Letras y digitos
+        [:alpha:]: Letras
+        [:blank:]: Espacios en blanco
+        [:cntrl:]: Caracteres de control
+        [:space:]: Los espacios en blanco verticales y horizontales
+        [:digit:]: Digitos
+        [:lower:]: Letras minusculas
+        [:upper:]: Letras mayusculas
+        [:punct:]: Signos de puntuacion
 
++Exclusion [^]: 
+    -Se usa para indicar que en una posicion puede encontrarse cualquier caracter EXCEPTO los que se encuentran entre [^ y ]
+    -Ejemplo:
+        c[^aei]s[^ao] => cose, cosi, cosu, cuse, cusi, cusu
 
++Rangos [-]:
+    -Se usa para indicar todos los valores intermedios entre un inicio y un final: numeros o letras
+    -Ejemplo:
+        c[a-d]s[0-5] = c[abcd]s[012345]
 
-
-
-
-
-
-asldkfjasdf;lkjasdfasdf;lkjfasd
-
-
-
-
-
-
-
-
-
-
-
-
+Las expresiones se pueden mezclar:
+    [3-8[:upper:]mty] => En esta posicion se admiten los numeros del 1 al 8, cualquier letra mayuscula o los caracteres m, t, y
