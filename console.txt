@@ -259,3 +259,20 @@ Es una cadena de caracteres que es utilizada para describir o encontrar patrones
 
 Las expresiones se pueden mezclar:
     [3-8[:upper:]mty] => En esta posicion se admiten los numeros del 1 al 8, cualquier letra mayuscula o los caracteres m, t, y
+
++Repeticiones:
+    x*: x no esta o esta 1 o muchas veces
+    x?: x no esta o esta una vez
+    x+: x esta 1 o muchas veces
+    x{n}: x esta n veces exactas
+    x{n,}: x esta minimo n veces
+    x{n,}: x esta maximo n veces
+    x{n,m}: x esta minimo n veces y maximo m veces
+
++Operador Logico OR:
+    -Da por valida cualquiera de las dos expresiones regulares
+    -Ejemplo:
+        ^a.*t$|^e.*x$ => Las que empiecen con a y terminen en t, o las que empiecen en e y terminen en x
+
+
+*****Shell Script*****
